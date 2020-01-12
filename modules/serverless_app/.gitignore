@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/terraform
 # Edit at https://www.gitignore.io/?templates=terraform
-
+lambda.zip
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
