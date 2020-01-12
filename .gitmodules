@@ -1,0 +1,3 @@
+[submodule "modules/sqs-event-service"]
+	path = modules/sqs-event-service
+	url = https://github.com/esgi-cloud-project/sqs-event-service
