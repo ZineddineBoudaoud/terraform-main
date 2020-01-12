@@ -1,3 +1,6 @@
 [submodule "modules/sqs_event_service"]
 	path = modules/sqs_event_service
 	url = https://github.com/esgi-cloud-project/sqs-event-service
+[submodule "modules/serverless_app"]
+	path = modules/serverless_app
+	url = https://github.com/esgi-cloud-project/serverless_app.git
