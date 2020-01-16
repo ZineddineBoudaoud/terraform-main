@@ -1,6 +1,21 @@
+provider "aws" {
+    profile = "default"
+    region = "eu-west-3"
+}
+
+
 module "sqs_event_service" {
   source = "./modules/sqs_event_service"
   
+}
+
+module "back_end" {
+  source = "./modules/back_end"
+  GITHUB_ACCESS_TOKEN = var.GITHUB_ACCESS_TOKEN
+  vpc = aws_vpc.main
+  sqs_id = module.sqs_event_service.sqs_id
+  sqs_arn = module.sqs_event_service.sqs_arn
+  public_subnet_depends_on = [aws_internet_gateway.main]
 }
 
 module "serverless_app" {
@@ -15,3 +30,7 @@ output "serverless_app_url" {
   description = "The url for the serverless application"
 }
 
+output "back_end_app_url" {
+  value = module.back_end.alb_hostname
+  description = "The url for the back end"
+}
