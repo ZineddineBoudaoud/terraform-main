@@ -4,6 +4,6 @@
 [submodule "modules/serverless_app"]
 	path = modules/serverless_app
 	url = https://github.com/esgi-cloud-project/serverless_app.git
-[submodule "modules/back_end"]
-	path = modules/back_end
-	url = https://github.com/esgi-cloud-project/back_end
+[submodule "modules/ecs_ec2_codepipeline"]
+	path = modules/ecs_ec2_codepipeline
+	url = https://github.com/esgi-cloud-project/ecs_ec2_codepipeline.git
