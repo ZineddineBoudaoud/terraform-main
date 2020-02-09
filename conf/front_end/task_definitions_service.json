@@ -17,6 +17,12 @@
         "awslogs-stream-prefix": "fargate",
         "mode": "non-blocking"
       }
-    }
+    },
+    "environment": [
+      {
+        "name": "BACK_END_URL",
+        "value": "${back_end_url}"
+      }
+    ]
   }
 ]

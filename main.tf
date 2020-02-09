@@ -28,8 +28,10 @@ module "back_end" {
   buildspec_path = "${path.module}/conf/back_end/buildspec.yml"
   task_definition_path = "${path.module}/conf/back_end/task_definitions_service.json"
   vpc = aws_vpc.main
-  sqs_id = module.sqs_event_service.sqs_id
-  sqs_arn = module.sqs_event_service.sqs_arn
+  container_env = {
+    event_service_url = module.sqs_event_service.sqs_id
+    event_service_arn = module.sqs_event_service.sqs_arn
+  }
   public_subnet_depends_on = [aws_internet_gateway.main]
   code_pipeline_source_conf = {
     OAuthToken = var.GITHUB_ACCESS_TOKEN
@@ -49,8 +51,11 @@ module "front_end" {
   buildspec_path = "${path.module}/conf/front_end/buildspec.yml"
   task_definition_path = "${path.module}/conf/front_end/task_definitions_service.json"
   vpc = aws_vpc.main
-  sqs_id = module.sqs_event_service.sqs_id
-  sqs_arn = module.sqs_event_service.sqs_arn
+  container_env = {
+    event_service_url = module.sqs_event_service.sqs_id
+    event_service_arn = module.sqs_event_service.sqs_arn
+    back_end_url = module.back_end.alb_hostname
+  }
   public_subnet_depends_on = [aws_internet_gateway.main]
   code_pipeline_source_conf = {
     OAuthToken = var.GITHUB_ACCESS_TOKEN
